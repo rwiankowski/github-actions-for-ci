@@ -26,7 +26,8 @@ jobs:
         path: public/
 
   test:
-  
+    
+    needs: build
     runs-on: ubuntu-latest
     
     strategy:
@@ -36,6 +37,11 @@ jobs:
       
     steps:
       - uses: actions/chechout@v2
+      - uses: actions/download-artifact@main
+        with:
+          name: webpack artifacts
+          path: public/
+        
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
@@ -46,5 +52,3 @@ jobs:
           npm test
         env:
           CI: true
-        
-        
