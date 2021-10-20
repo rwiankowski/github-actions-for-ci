@@ -16,7 +16,7 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
-    - name: npmm install and build webpack
+    - name: npm install and build webpack
       run: |
         npm install
         npm run build
@@ -36,7 +36,6 @@ jobs:
         node-version: [12.x, 14.x]
       
     steps:
-      - uses: actions/chechout@v2
       - uses: actions/download-artifact@main
         with:
           name: webpack artifacts
